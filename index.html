@@ -845,6 +845,127 @@ footer a:hover {
   }
   */
 }
+
+/* Team Section */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  margin-top: 60px;
+}
+
+.team-member {
+  background: var(--soft-white);
+  border-radius: 20px;
+  padding: 35px 25px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(26, 26, 46, 0.08);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.team-member::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, var(--deep-purple), var(--mint-green));
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+
+.team-member:hover::before {
+  transform: scaleX(1);
+}
+
+.team-member:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 15px 40px rgba(26, 26, 46, 0.15);
+}
+
+.member-img-wrapper {
+  width: 180px;
+  height: 180px;
+  margin: 0 auto 25px;
+  position: relative;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid transparent;
+  background: linear-gradient(var(--soft-white), var(--soft-white)) padding-box,
+              linear-gradient(135deg, var(--mint-green), var(--deep-purple)) border-box;
+  transition: transform 0.3s ease;
+}
+
+.team-member:hover .member-img-wrapper {
+  transform: scale(1.05);
+}
+
+.member-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.team-member h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.4rem;
+  color: var(--dark-navy);
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.team-member .role {
+  font-size: 1rem;
+  color: var(--deep-purple);
+  font-weight: 600;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.team-member .bio {
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Responsive - Team Section */
+@media (max-width: 768px) {
+  .team-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+  }
+  
+  .member-img-wrapper {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .team-member {
+    padding: 30px 20px;
+  }
+  
+  .team-member h3 {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .team-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  
+  .member-img-wrapper {
+    width: 160px;
+    height: 160px;
+  }
+}
   </style>
 </head>
 <body>
@@ -918,22 +1039,38 @@ footer a:hover {
     </div>
   </section>
 
-  <!-- Contact Section -->
-  <section id="contact">
-    <h2 class="section-title brown">Contact Us</h2>
-    <div class="container">
-      <form class="contact-form" action="mailto:bashorunidris01@gmail.com" method="post" enctype="text/plain">
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="email" name="email" placeholder="Your Email" required>
-        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-        <button type="submit">Send Message</button>
-      </form>
-    </div>
-  </section>
+ <!-- Add this section after the About section and before Contact -->
+
+<section id="team">
+  <div class="container">
+    <h2 class="section-title purple">Our Team</h2>
+    <div class="team-grid">
+      
+      <div class="team-member">
+        <div class="member-img-wrapper">
+          <img src="https://i.ibb.co/XZ5mVWxv/Screenshot-20260209-204731-Gallery.jpg" alt="Team Member 1">
+        </div>
+        <h3>Bashorun Idris </h3>
+        <p class="role">Founder & CEO</p>
+        <p class="bio">Leading the vision and strategy for Pose's future in fitness technology.</p>
+      </div>
+      
+     <div class="team-member">
+        <div class="member-img-wrapper">
+          <img src="https://i.ibb.co/Q7SFcMgW/Screenshot-20260209-204556-Gallery.jpg" alt="Team Member 1">
+        </div>
+        <h3>Alli Saliu </h3>
+        <p class="role">COO</p>
+        <p class="bio">Transforming vision into reality through operational excellence and strategic execution.</p>
+      </div>
+      </div></div></div>
+      
+      
+</section>
 
   <!-- Footer -->
   <footer>
-    &copy; 2026 iSmart Digital Connect. All rights reserved. | <a href="/cdn-cgi/l/email-protection#472526342f283532292e23352e34777607202a262e2b6924282a">Contact Us</a>
+    &copy; 2026 iSmart Digital Connect. All rights reserved. | <a href="poseinfos@gmail.com">Contact Us</a>
   </footer>
 
   <!-- Scripts -->
@@ -990,7 +1127,12 @@ footer a:hover {
     document.querySelector('.hero button').addEventListener('click', function() {
   window.location.href = 'https://poseapp.vercel.app';
 });
+
+document.querySelector('a[href="poseinfos@gmail.com"]').addEventListener('click', function(e) {
+  e.preventDefault();
+  window.location.href = 'mailto:poseinfos@gmail.com';
+});
   </script>
 
 </body>
-</html>
+  </html>
